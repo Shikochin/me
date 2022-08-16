@@ -1,0 +1,39 @@
+@use "@angular/material" as mat;
+
+@use "./shared" as shared;
+@use "./theme" as theme;
+@use "./material-patches" as mat-patches;
+
+@use "sass:map" as map;
+@use "sass:color" as color;
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	font-family: shared.$font-family;
+	user-select: none;
+}
+
+/* CSS is awesome */
+* {
+	box-sizing: border-box;
+}
+
+.select {
+	user-select: initial;
+}
+
+@include mat.core();
+
+@include mat.all-component-themes(theme.$theme-base);
+
+@include mat.all-component-colors(theme.$theme-light);
+
+@media (prefers-color-scheme: dark) {
+	@include mat.all-component-colors(theme.$theme-dark);
+}
+
+@include mat-patches.nav-list();
