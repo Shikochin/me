@@ -31,7 +31,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
 		this.router.events
 			.pipe(
 				takeUntil(this.destory$),
-				filter(() => this.layout.isLarge)
+				filter(() => !this.layout.isLarge)
 			)
 			.subscribe(event => {
 				if (event instanceof NavigationEnd) {
