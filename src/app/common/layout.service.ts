@@ -8,8 +8,8 @@ import { BehaviorSubject, map, share, tap } from "rxjs";
 export class LayoutService {
 	constructor(private breakpointObserver: BreakpointObserver) {}
 	isLarge$ = this.breakpointObserver.observe("(width >= 600px)").pipe(
-		map(v => v.matches),
-		tap(v => (this.isLarge = v)),
+		map(it => it.matches),
+		tap(it => (this.isLarge = it)),
 		share({
 			connector: () => new BehaviorSubject(this.isLarge),
 		})
@@ -18,8 +18,8 @@ export class LayoutService {
 	isDark$ = this.breakpointObserver
 		.observe("(prefers-color-scheme: dark)")
 		.pipe(
-			map(v => v.matches),
-			tap(v => (this.isDark = v)),
+			map(it => it.matches),
+			tap(it => (this.isDark = it)),
 			share({
 				connector: () => new BehaviorSubject(this.isDark),
 			})

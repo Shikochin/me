@@ -1,6 +1,8 @@
+import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, RouterModule } from "@angular/router";
 import { map, takeUntil } from "rxjs";
+import { NotfoundComponent } from "src/app/error/notfound/notfound.component";
 
 import { ArticleService } from "../article.service";
 import { Article, ArticleId } from "../article.type";
@@ -9,6 +11,8 @@ import { Article, ArticleId } from "../article.type";
 	selector: "krtl-article",
 	templateUrl: "./article.component.html",
 	styleUrls: ["./article.component.scss"],
+	standalone: true,
+	imports: [CommonModule, RouterModule, NotfoundComponent],
 })
 export class ArticleComponent implements OnInit, OnDestroy {
 	constructor(
