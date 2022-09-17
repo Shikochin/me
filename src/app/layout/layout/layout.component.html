@@ -1,17 +1,20 @@
-<!-- Unlike what angular.io did to app bar,
-	 I personally prefers to display grey for it
-	 as well as background.
+<!-- Unlike what other apps like
+	 angular.io did to app bar,
+	 I personally prefers to display 
+	 a grey background for it.
 	 
-	 Maybe I can achieve this in a pure CSS way? -->
-<mat-toolbar [color]="(layout.isDark$ | async) ? '' : 'primary'">
+	 Maybe I can achieve this in pure CSS way? -->
+<mat-toolbar [color]="(layout.isDark$ | async) ? '' : 'primary'" id="toolbar">
 	<button mat-icon-button (click)="drawer.toggle()">
 		<mat-icon>menu</mat-icon>
 	</button>
 	<header>Keritial</header>
+	<!--
 	<div class="spacer"></div>
 	<button mat-icon-button>
 		<mat-icon>more_horiz</mat-icon>
 	</button>
+	-->
 </mat-toolbar>
 <mat-sidenav-container id="drawer-container">
 	<mat-sidenav-content id="content-container">

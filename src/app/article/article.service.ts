@@ -23,7 +23,12 @@ const ARTICLES: Article[] = [
 	{
 		id: "cq",
 		title: "cq title",
-		content: "cq content",
+		content:
+			"<p>诶嘿，</p>" +
+			"<p>我的CQ🥵🥵🥵，&lt;此处省去别在这理发店言论&gt;🤤🤤🤤</p>".repeat(
+				64
+			) +
+			"<p><del>Testing purpose only (for sure</del></p>",
 		alias: ["草q", "cqing"],
 		date: new Date(),
 		lastModified: new Date(Date.now() + Math.random() * 114514),

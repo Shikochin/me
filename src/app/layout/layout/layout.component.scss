@@ -4,6 +4,10 @@
 	flex-direction: column;
 }
 
+#toolbar {
+	contain: strict;
+}
+
 #drawer {
 	min-width: 320px;
 	/* Disable scroll chaining */
@@ -12,6 +16,10 @@
 
 #drawer-container {
 	flex-grow: 1;
+}
+
+#content-container {
+	contain: content;
 }
 
 #content {
