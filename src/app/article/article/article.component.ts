@@ -19,13 +19,13 @@ export class ArticleComponent implements OnInit, OnDestroy {
 		private route: ActivatedRoute,
 		private articleService: ArticleService
 	) {}
-	destory$ = new EventEmitter();
+	private destory$ = new EventEmitter();
 
-	id$ = this.route.params.pipe(
+	protected id$ = this.route.params.pipe(
 		takeUntil(this.destory$),
 		map(v => (v["id"] || "") as ArticleId)
 	);
-	article: Article | null | undefined;
+	protected article: Article | null | undefined;
 
 	ngOnInit(): void {
 		this.id$.subscribe(v => {

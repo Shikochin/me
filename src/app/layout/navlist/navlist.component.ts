@@ -10,7 +10,7 @@ export class NavlistComponent implements OnInit {
 
 	ngOnInit(): void {}
 
-	links: Link[] = [
+	protected links: Link[] = [
 		{
 			name: "Home",
 			icon: "home",

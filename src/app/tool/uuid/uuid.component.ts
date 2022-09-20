@@ -13,10 +13,10 @@ import { v4 as uuidv4 } from "uuid";
 	styleUrls: ["./uuid.component.scss"],
 })
 export class UuidComponent implements OnInit {
-	uuidv4!: string;
+	protected uuidv4!: string;
 	constructor() {}
 
-	refreshuuidv4(): void {
+	protected refreshuuidv4(): void {
 		this.uuidv4 = uuidv4();
 	}
 

@@ -13,8 +13,8 @@ import { Article } from "../article.type";
 	standalone: true,
 })
 export class ArchiveComponent implements OnInit {
-	constructor(public articleService: ArticleService) {}
-	articles: Article[] = [];
+	constructor(private articleService: ArticleService) {}
+	protected articles: Article[] = [];
 
 	ngOnInit(): void {
 		this.articleService.getArticlesList(0).then(it => (this.articles = it));

@@ -17,11 +17,11 @@ import { LayoutService } from "../../common/layout.service";
 	styleUrls: ["./layout.component.scss"],
 })
 export class LayoutComponent implements OnInit, OnDestroy {
-	destory$ = new EventEmitter();
+	private destory$ = new EventEmitter();
 	@ViewChild("drawer")
-	drawer?: MatDrawer;
+	private drawer?: MatDrawer;
 
-	constructor(public layout: LayoutService, private router: Router) {}
+	constructor(protected layout: LayoutService, private router: Router) {}
 
 	ngOnDestroy(): void {
 		this.destory$.emit();
