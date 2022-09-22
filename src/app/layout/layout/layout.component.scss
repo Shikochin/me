@@ -1,5 +1,5 @@
 :host {
-	min-height: 100%;
+	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
@@ -7,19 +7,18 @@
 #drawer {
 	min-width: 320px;
 	contain: content;
-	/* Disable scroll chaining */
 	overscroll-behavior: contain;
 }
 
-#drawer-container {
+#container {
 	flex-grow: 1;
 }
 
-#content-container {
+#content {
 	contain: content;
 }
 
-#content {
+#content-warp {
 	height: 100%;
 	padding: 16px;
 }
