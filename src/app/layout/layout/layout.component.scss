@@ -4,6 +4,10 @@
 	flex-direction: column;
 }
 
+#toolbar {
+	contain: strict;
+}
+
 #drawer {
 	min-width: 320px;
 	contain: content;
@@ -11,14 +15,17 @@
 }
 
 #container {
+	contain: strict;
 	flex-grow: 1;
 }
 
 #content {
-	contain: content;
+	contain: strict;
 }
 
 #content-warp {
+	contain: strict;
+	overflow: scroll;
 	height: 100%;
 	padding: 16px;
 }
