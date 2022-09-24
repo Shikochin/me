@@ -6,7 +6,16 @@ const ARTICLES: Article[] = [
 	{
 		id: "test",
 		title: "test title",
-		content: "test content",
+		content:
+			"test content: " +
+			new Date.toString() +
+			"<br>" +
+			Array.from(
+				{ length: 100 },
+				() => Math.random() * Number.MAX_SAFE_INTEGER
+			)
+				.map(it => it.toString(16))
+				.joint(" "),
 		alias: ["测试", "testing"],
 		date: new Date(),
 		lastModified: new Date(Date.now() + Math.random() * 114514),
@@ -20,7 +29,7 @@ const ARTICLES: Article[] = [
 		date: new Date(),
 		lastModified: new Date(Date.now() + Math.random() * 114514),
 	},
-	{
+	/*{
 		id: "cq",
 		title: "cq title",
 		content:
@@ -32,7 +41,7 @@ const ARTICLES: Article[] = [
 		alias: ["草q", "cqing"],
 		date: new Date(),
 		lastModified: new Date(Date.now() + Math.random() * 114514),
-	},
+	},*/
 ];
 
 @Injectable({

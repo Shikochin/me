@@ -33,13 +33,13 @@ export class NavlistComponent implements OnInit {
 			href: "/about",
 		},
 	];
-	protected g(): void {
+	/*protected g(): void {
 		this.links.push(
 			...Array.from({ length: 32 }, (it, i) => ({
 				name: `Item #${this.links.length + i}`,
 			}))
 		);
-	}
+	}*/
 }
 
 export interface Link {
