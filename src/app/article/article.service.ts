@@ -8,14 +8,14 @@ const ARTICLES: Article[] = [
 		title: "test title",
 		content:
 			"test content: " +
-			new Date.toString() +
+			new Date().toString() +
 			"<br>" +
 			Array.from(
 				{ length: 100 },
 				() => Math.random() * Number.MAX_SAFE_INTEGER
 			)
 				.map(it => it.toString(16))
-				.joint(" "),
+				.join(" "),
 		alias: ["测试", "testing"],
 		date: new Date(),
 		lastModified: new Date(Date.now() + Math.random() * 114514),
