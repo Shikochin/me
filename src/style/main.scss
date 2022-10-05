@@ -2,10 +2,10 @@
 
 @use "./shared" as shared;
 @use "./theme" as theme;
-@use "./material-patches" as mat-patches;
 
-@use "sass:map" as map;
-@use "sass:color" as color;
+@import "./material-patches";
+@import "./normalize.css";
+@import "./material-icons.css";
 
 html,
 body {
@@ -33,5 +33,3 @@ body {
 @media (prefers-color-scheme: dark) {
 	@include mat.all-component-colors(theme.$theme-dark);
 }
-
-@include mat-patches.nav-list();
