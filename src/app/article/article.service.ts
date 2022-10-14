@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Article, ArticleId } from "./article.type";
 
 const ARTICLES: Article[] = [
-	{
+	/*{
 		id: "test",
 		title: "test title",
 		content:
@@ -12,11 +12,11 @@ const ARTICLES: Article[] = [
 			"<br>" +
 			Array.from({ length: 100 }, () => Math.random() * Number.MAX_SAFE_INTEGER)
 				.map(it => it.toString(16))
-				.join(" "),
+				.join("").replace(/\.| /g,''),
 		alias: ["测试", "testing"],
 		date: new Date(),
 		lastModified: new Date(Date.now() + Math.random() * 114514),
-	},
+	},/*
 	{
 		id: "hello-world",
 		title: "你好世界",

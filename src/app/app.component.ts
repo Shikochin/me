@@ -13,7 +13,7 @@ enum IndicatorStatus {
 }
 
 @Component({
-	selector: "krtl-app",
+	selector: "krt-app",
 	templateUrl: "./app.component.html",
 	styleUrls: ["./app.component.scss"],
 	animations: [

@@ -6,7 +6,7 @@ import { ArticleService } from "../article.service";
 import { Article } from "../article.type";
 
 @Component({
-	selector: "krtl-archive",
+	selector: "krt-archive",
 	templateUrl: "./archive.component.html",
 	styleUrls: ["./archive.component.scss"],
 	imports: [CommonModule, RouterModule],

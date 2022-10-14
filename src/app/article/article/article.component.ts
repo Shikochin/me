@@ -8,7 +8,7 @@ import { ArticleService } from "../article.service";
 import { Article, ArticleId } from "../article.type";
 
 @Component({
-	selector: "krtl-article",
+	selector: "krt-article",
 	templateUrl: "./article.component.html",
 	styleUrls: ["./article.component.scss"],
 	standalone: true,
