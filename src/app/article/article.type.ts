@@ -1,8 +1,6 @@
-export type ArticleId = string;
-
 export interface Article {
-	id: ArticleId;
-	alias?: ArticleId[];
+	id: string;
+	alias?: this["id"][];
 	date?: Date;
 	lastModified?: Date;
 	title: string;

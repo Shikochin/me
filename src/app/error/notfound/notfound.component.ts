@@ -1,8 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
-import { ActivatedRoute, RouterModule } from "@angular/router";
-import { map } from "rxjs";
+import { Router, RouterModule } from "@angular/router";
 
 @Component({
 	selector: "krtl-notfound",
@@ -12,9 +11,13 @@ import { map } from "rxjs";
 	styleUrls: ["./notfound.component.scss"],
 })
 export class NotfoundComponent implements OnInit {
-	constructor(private route: ActivatedRoute) {}
+	constructor(private router: Router) {}
 
-	protected path$ = this.route.url.pipe(map(it => "/" + it.map(it => it.path).join("/")));
+	protected path = this.router.url;
+
+	protected reload(): void {
+		this.router.navigateByUrl(this.router.url);
+	}
 
 	ngOnInit(): void {}
 }

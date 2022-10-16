@@ -17,6 +17,6 @@ export class ArchiveComponent implements OnInit {
 	protected articles: Article[] = [];
 
 	ngOnInit(): void {
-		this.articleService.getArticlesList(0).then(it => (this.articles = it));
+		//this.articleService.getArticleList().then(it => (this.articles = it));
 	}
 }

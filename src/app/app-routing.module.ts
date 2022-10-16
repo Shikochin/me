@@ -1,27 +1,12 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes, TitleStrategy } from "@angular/router";
 
-import { ArchiveComponent } from "./article/archive/archive.component";
-import { ArticleComponent } from "./article/article/article.component";
 import { CustomTitleStrategy } from "./common/title-strategy.service";
 
 const routes: Routes = [
 	{
 		path: "article",
-		children: [
-			{
-				path: "",
-				component: ArchiveComponent,
-				data: {
-					type: "all",
-				},
-				title: "Articles",
-			},
-			{
-				path: ":id",
-				component: ArticleComponent,
-			},
-		],
+		loadChildren: () => import("./article/article.module").then(it => it.ArticleModule),
 	},
 	{
 		path: "tool",
@@ -54,7 +39,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
 	exports: [RouterModule],
 	providers: [{ provide: TitleStrategy, useClass: CustomTitleStrategy }],
 })
