@@ -11,8 +11,6 @@ if (environment.production) {
 	enableGoogleAnalytics();
 }
 
-platformBrowserDynamic()
-	.bootstrapModule(AppModule)
-	.catch(it => console.error(it));
+platformBrowserDynamic().bootstrapModule(AppModule).catch(console.error);
 
-addEventListener("unhandledrejection", it => console.error(it.reason));
+addEventListener("unhandledrejection", console.error);

@@ -8,7 +8,11 @@ import { ArticleService } from "./article.service";
 })
 export class ArticleGuard implements CanMatch {
 	constructor(private article: ArticleService) {}
-	async canMatch(route: Route, segments: UrlSegment[]): Promise<boolean> {
-		return !!(await this.article.getArticle(segments.map(it => it.path).join()));
+	canMatch(route: Route, segments: UrlSegment[]): Promise<boolean> {
+		return new Promise(resolve =>
+			this.article
+				.getArticle(segments.map(it => it.path).join())
+				.subscribe(article => resolve(!["NOT_FOUND", "UNKNOWN"].includes(article.id)))
+		);
 	}
 }

@@ -72,25 +72,20 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		merge(
-			this.router.events.pipe(filter(it => it instanceof NavigationEnd)),
-			this.navigate$.pipe(filter(it => it === this.router.url))
-		)
+		const navigationEnd$ = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
+		merge(navigationEnd$, this.navigate$.pipe(filter(url => url === this.router.url)))
 			.pipe(
 				takeUntil(this.destory$),
 				filter(() => !this.layout.isLarge)
 			)
 			.subscribe(() => this.drawer?.close());
 
-		merge(
-			fromEvent(globalThis, "load").pipe(take(1)),
-			this.router.events.pipe(filter(it => it instanceof NavigationEnd))
-		)
+		merge(navigationEnd$, fromEvent(globalThis, "load").pipe(take(1)))
 			.pipe(takeUntil(this.destory$))
 			.subscribe(() => (this.indicator = IndicatorStatus.DONE));
 
 		this.router.events
-			.pipe(filter(it => it instanceof NavigationStart))
+			.pipe(filter(event => event instanceof NavigationStart))
 			.pipe(takeUntil(this.destory$))
 			.subscribe(() => (this.indicator = IndicatorStatus.LOADING));
 	}

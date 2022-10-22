@@ -1,3 +1,4 @@
+import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -26,6 +27,7 @@ import { AppRoutingModule } from "./app-routing.module";
 			// or after 30 seconds (whichever comes first).
 			registrationStrategy: "registerWhenStable:30000",
 		}),*/
+		HttpClientModule,
 		MatSidenavModule,
 		MatToolbarModule,
 		MatIconModule,

@@ -1,9 +1,10 @@
 <h1>Articles</h1>
 <p>Actually this isn't a working blog.</p>
 <div *ngFor="let i of articles">
-	<a routerLink="/article/{{ i.id }}">{{ i.id }}</a
-	>, alias: <ng-container *ngFor="let a of i.alias">"{{ a }}" </ng-container><br />
+	<a routerLink="/article/{{ i.id }}">{{ i.id }}</a>
+	<br />
 	Content: {{ i.content }} <br />&nbsp;
 </div>
-<a routerLink="/article/1">Hello world</a>
-<a routerLink="/article/2">404</a>
+<div><a routerLink="/article/1">Normal</a></div>
+<div><a routerLink="/article/2">Unexcepted data</a></div>
+<div><a routerLink="/article/3">Nonexistent</a></div>

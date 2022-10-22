@@ -1,8 +1,7 @@
 export interface Article {
 	id: string;
-	alias?: this["id"][];
 	date?: Date;
 	lastModified?: Date;
-	title: string;
+	title?: string;
 	content: string;
 }
