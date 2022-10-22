@@ -14,9 +14,13 @@ export class ArticleService {
 		if (this.cache.has(id)) {
 			const article = this.cache.get(id);
 			if (article) {
+				queueMicrotask(() => this.updateArticle(id));
 				return article;
 			}
 		}
+		return this.updateArticle(id);
+	}
+	private updateArticle(id: string): Observable<Article> {
 		const article = this.fetchArticle(id);
 		this.cache.set(id, article);
 		return article;
