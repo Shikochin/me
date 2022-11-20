@@ -1,11 +1,11 @@
-@import "https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Poppins&display=swap";
-@import "./normalize.css";
-
 @use "@angular/material" as mat;
 @use "material-patches";
 @use "material-icons";
 @use "shared" as shared;
 @use "theme" as theme;
+
+@import "https://fonts.googleapis.com/css2?family=Noto+Sans+SC&family=Poppins&display=swap";
+@import "./normalize.css";
 
 
 html,
