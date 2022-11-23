@@ -11,9 +11,12 @@ body {
 	height: 100%;
 }
 
+html {
+	overscroll-behavior: contain;
+}
+
 body {
 	font-family: shared.$font-family;
-	overscroll-behavior: contain;
 	/* Non-standard, Chrome and Safari only */
 	-webkit-tap-highlight-color: transparent;
 }
