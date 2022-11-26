@@ -11,16 +11,15 @@ mat-nav-list {
 		margin-bottom: 4px !important;
 		width: calc(100% - 16px) !important;
 		border-radius: 4px !important;
-		.mat-list-item-content {
-			padding: 0 8px !important;
-		}
 		mat-icon {
 			padding: initial !important;
 			margin-right: 32px;
+			vertical-align: middle;
 		}
-		.mat-list-text {
-			font-size: 13px !important;
-			padding: initial !important;
+		.mat-mdc-list-item-unscoped-content {
+			display: flex;
+			height: 100%;
+			width: 100%;
 		}
 	}
 }
