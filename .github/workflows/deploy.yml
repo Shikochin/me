@@ -30,6 +30,13 @@ jobs:
     - name: Build
       run: pnpm build
 
+    - name: Configure Cloudflare Page
+      run: |
+        echo "/*">>./_headers
+        echo "  strict-transport-security: max-age=31536000; includeSubDomains; preload">>./_headers
+
+        mv ./_headers ./dist/krtl/
+
     - name: Publish to Cloudflare Pages
       uses: cloudflare/pages-action@1
       with:
