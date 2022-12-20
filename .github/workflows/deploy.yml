@@ -1,20 +1,15 @@
-name: Pages
+name: Deploy
 
 on:
   push:
     branches: [ "main" ]
-    
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 concurrency:
   group: "pages"
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     
     steps:
@@ -34,12 +29,12 @@ jobs:
 
     - name: Build
       run: pnpm build
-      
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
+
+    - name: Publish to Cloudflare Pages
+      uses: cloudflare/pages-action@1
       with:
-          path: "./dist/krtl"
-          
-    - name: Deploy to GitHub Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+        apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        projectName: "krtl"
+        directory: "./dist/krtl/"
+        gitHubToken: ${{ secrets.GITHUB_TOKEN }}
