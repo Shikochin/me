@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { ArticleComponent } from "./article.component";
+import { Base64Component } from "./base64.component";
 
-describe("ArticleComponent", () => {
-	let component: ArticleComponent;
-	let fixture: ComponentFixture<ArticleComponent>;
+describe("Base64Component", () => {
+	let component: Base64Component;
+	let fixture: ComponentFixture<Base64Component>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [ArticleComponent],
+			imports: [Base64Component],
 		}).compileComponents();
 
-		fixture = TestBed.createComponent(ArticleComponent);
+		fixture = TestBed.createComponent(Base64Component);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

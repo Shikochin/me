@@ -1,11 +1,11 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { Component, EventEmitter, HostBinding, OnInit, ViewChild } from "@angular/core";
 import { AnimationCurves } from "@angular/material/core";
 import { MatDrawer } from "@angular/material/sidenav";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";
 import { filter, fromEvent, merge, take, takeUntil } from "rxjs";
 
-import { LayoutService } from "./common/layout.service";
+import { ThemeService } from "./common/layout.service";
 
 enum IndicatorStatus {
 	LOADING = "l",
@@ -13,7 +13,7 @@ enum IndicatorStatus {
 }
 
 @Component({
-	selector: "krt-app",
+	selector: "krtl-app",
 	templateUrl: "./app.component.html",
 	styleUrls: ["./app.component.scss"],
 	animations: [
@@ -37,8 +37,10 @@ enum IndicatorStatus {
 export class AppComponent implements OnInit {
 	private destory$ = new EventEmitter();
 	protected navigate$ = new EventEmitter<string>();
+
 	@ViewChild("drawer")
 	private drawer?: MatDrawer;
+
 	protected indicator: IndicatorStatus = IndicatorStatus.LOADING;
 
 	protected links: Link[] = [
@@ -65,7 +67,7 @@ export class AppComponent implements OnInit {
 		},
 	];
 
-	constructor(protected layout: LayoutService, private router: Router) {}
+	constructor(protected layout: ThemeService, private router: Router) {}
 
 	ngOnDestroy(): void {
 		this.destory$.emit();
@@ -73,20 +75,27 @@ export class AppComponent implements OnInit {
 
 	ngOnInit(): void {
 		const navigationEnd$ = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
-		merge(navigationEnd$, this.navigate$.pipe(filter(url => url === this.router.url)))
+
+		const refresh$ = this.navigate$.pipe(filter(url => url === this.router.url));
+
+		merge(navigationEnd$, refresh$)
 			.pipe(
-				takeUntil(this.destory$),
-				filter(() => !this.layout.isLarge)
+				filter(() => !this.layout.isLarge),
+				takeUntil(this.destory$)
 			)
 			.subscribe(() => this.drawer?.close());
 
-		merge(navigationEnd$, fromEvent(globalThis, "load").pipe(take(1)))
+		const pageLoad$ = fromEvent(globalThis, "load").pipe(take(1));
+
+		merge(navigationEnd$, pageLoad$)
 			.pipe(takeUntil(this.destory$))
 			.subscribe(() => (this.indicator = IndicatorStatus.DONE));
 
 		this.router.events
-			.pipe(filter(event => event instanceof NavigationStart))
-			.pipe(takeUntil(this.destory$))
+			.pipe(
+				filter(event => event instanceof NavigationStart),
+				takeUntil(this.destory$)
+			)
 			.subscribe(() => (this.indicator = IndicatorStatus.LOADING));
 	}
 }
