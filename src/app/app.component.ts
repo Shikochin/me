@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
-import { Component, EventEmitter, HostBinding, OnInit, ViewChild } from "@angular/core";
+import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { AnimationCurves } from "@angular/material/core";
 import { MatDrawer } from "@angular/material/sidenav";
 import { NavigationEnd, NavigationStart, Router } from "@angular/router";

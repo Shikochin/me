@@ -2,21 +2,26 @@
 <p>Decode or encode Base64 strings. UTF-8 supported.</p>
 
 <div class="control">
-	<button mat-button (click)="reverse = !reverse" style="flex-grow: 1">Reverse</button>
+	<button mat-button (click)="reverse = !reverse">Reverse</button>
+	<div style="flex-grow: 1; display: flex;">
+		<div [style.order]="reverse ? '3' : '1'">Original</div>
+		<mat-icon style="order: 2"></mat-icon>
+		<div [style.order]="reverse ? '1' : '3'">Base64</div>
+	</div>
 	<button mat-raised-button color="primary" (click)="convert()">Convert</button>
 </div>
 
 <div class="textarea">
 	<mat-form-field style="order: 2">
 		<mat-label>Original</mat-label>
-		<textarea matInput placeholder="Type here..." [(ngModel)]="original" [disabled]="reverse"></textarea>
+		<textarea matInput placeholder="Type here..." [(ngModel)]="original" [readonly]="reverse"></textarea>
 		<button *ngIf="reverse" matSuffix mat-icon-button [cdkCopyToClipboard]="original">
 			<mat-icon>content_copy</mat-icon>
 		</button>
 	</mat-form-field>
 	<mat-form-field [style.order]="reverse ? '1' : '3'">
-		<mat-label>Base64 encoded</mat-label>
-		<textarea matInput placeholder="VHlwZSBoZXJlLi4u" [(ngModel)]="encoded" [disabled]="!reverse"></textarea>
+		<mat-label>Base64</mat-label>
+		<textarea matInput placeholder="VHlwZSBoZXJlLi4u" [(ngModel)]="encoded" [readonly]="!reverse"></textarea>
 		<button *ngIf="!reverse" matSuffix mat-icon-button [cdkCopyToClipboard]="encoded">
 			<mat-icon>content_copy</mat-icon>
 		</button>

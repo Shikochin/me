@@ -1,5 +1,10 @@
 <h1>UUID</h1>
-<input type="text" [value]="uuidv4" readonly />
-<br />
+
+<mat-form-field class="example-form-field">
+	<mat-label>Clearable input</mat-label>
+	<input matInput type="text" [value]="uuidv4" readonly/>
+	<button matSuffix mat-icon-button [cdkCopyToClipboard]="uuidv4">
+		<mat-icon>content_copy</mat-icon>
+	</button>
+</mat-form-field>
 <button mat-raised-button (click)="refreshuuidv4()">Refresh</button>
-<button mat-raised-button [cdkCopyToClipboard]="uuidv4">Copy</button>
