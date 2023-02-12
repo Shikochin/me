@@ -1,6 +1,6 @@
 import { ClipboardModule } from "@angular/cdk/clipboard";
 import { TextFieldModule } from "@angular/cdk/text-field";
-import { Component, HostBinding, ViewEncapsulation } from "@angular/core";
+import { Component, ViewEncapsulation } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
@@ -16,7 +16,7 @@ import { SharedModule } from "src/app/common/shared.module";
 	encapsulation: ViewEncapsulation.None,
 })
 export class Base64Component {
-	@HostBinding("class.reverse")
+	// @HostBinding("class.reverse")
 	protected reverse = false;
 
 	protected original = "";

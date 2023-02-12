@@ -10,7 +10,7 @@ export function enableGoogleAnalytics(): void {
 			};
 			gtag("js", new Date());
 
-			gtag("config", "${config.googleAnalytics.id}");
+			gtag("config", "${config.analytics.google.id}");
 		</script>`
 	);
 }

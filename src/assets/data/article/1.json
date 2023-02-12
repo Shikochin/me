@@ -1,8 +1,0 @@
-{
-	"id": "hello-world",
-	"title": "你好世界",
-	"content": "<p>this is your very first blog(?</p><p>Everything you see is hard-written in <code>article.service.ts</code>, I have to implement a lot of things😭",
-	"alias": ["i-have-no-idea", "lttstore.com"],
-	"date": 1,
-	"lastModified": 2
-}
