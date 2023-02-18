@@ -10,8 +10,10 @@
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no" />
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
 		<meta name="theme-color" content="#1976d2" />
+		<link rel="preconnect" href="https://r.krtl.top" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://r.krtl.top/d/normalize.css/normalize.min.css" rel="stylesheet" />
 		<link
 			href="https://fonts.googleapis.com/css2?family=Lexend&family=Noto+Sans+SC&display=swap"
 			rel="stylesheet"
@@ -26,12 +28,32 @@
 	<body>
 		<krtl-app></krtl-app>
 		<noscript>
-			<h1>JavaScript required.</h1>
-			<hr />
-			<p>
-				JavaScript is required to run this application. Please enable it or switch to a browser that supports
-				it.
-			</p>
+			<iframe
+				src="https://r.krtl.top/a/p/javascript-required"
+				style="
+					position: fixed;
+					top: 0;
+					left: 0;
+					bottom: 0;
+					right: 0;
+					width: 100%;
+					height: 100%;
+					border: none;
+					margin: 0;
+					padding: 0;
+					overflow: hidden;
+					z-index: 999999;
+				"
+			>
+				<p>Your browser doesn't support iframes. Only a simple message is shown.</p>
+				<hr />
+				<h1>JavaScript required.</h1>
+				<hr />
+				<p>
+					JavaScript is required to run this application. Please enable it or switch to a browser that
+					supports it.
+				</p>
+			</iframe>
 		</noscript>
 	</body>
 </html>

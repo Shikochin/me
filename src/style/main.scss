@@ -3,12 +3,14 @@
 @use "shared" as shared;
 @use "theme" as theme;
 
-@import "./normalize.css";
-
 html,
 body {
 	height: 100%;
 	overscroll-behavior: none;
+}
+
+a {
+	color: inherit;
 }
 
 body {
