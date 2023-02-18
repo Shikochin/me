@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes, TitleStrategy } from "@angular/router";
-// import { concatMap, of, timer } from "rxjs";
 
+// import { concatMap, of, timer } from "rxjs";
 import { CustomTitleStrategy } from "./common/title-strategy.service";
 
 const routes: Routes = [
@@ -15,15 +15,15 @@ const routes: Routes = [
 	// 	children: [],
 	// },
 	{
-		path: "tool",
+		path: "app",
 		children: [
 			{
 				path: "uuid",
-				loadComponent: () => import("./tool/uuid/uuid.component").then(it => it.UuidComponent),
+				loadComponent: () => import("./app/uuid/uuid.component").then(it => it.UuidComponent),
 			},
 			{
 				path: "base64",
-				loadComponent: () => import("./tool/base64/base64.component").then(it => it.Base64Component),
+				loadComponent: () => import("./app/base64/base64.component").then(it => it.Base64Component),
 			},
 		],
 	},

@@ -7,7 +7,6 @@ import { MatInputModule } from "@angular/material/input";
 import { SharedModule } from "src/app/common/shared.module";
 
 @Component({
-	selector: "krtl-base64",
 	standalone: true,
 	imports: [SharedModule, MatInputModule, MatButtonModule, MatIconModule, ClipboardModule, TextFieldModule],
 	templateUrl: "./base64.component.html",
@@ -22,7 +21,7 @@ export class Base64Component {
 	protected original = "";
 	protected encoded = "";
 
-	protected convert() {
+	protected convert(): void {
 		if (this.reverse) {
 			this.original = Base64ToUTF8(this.encoded);
 		} else {
@@ -31,10 +30,12 @@ export class Base64Component {
 	}
 }
 
-function UTF8ToBase64(it: string) {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+function UTF8ToBase64(it: string): string {
 	return window.btoa(unescape(encodeURIComponent(it)));
 }
 
-function Base64ToUTF8(it: string) {
+// eslint-disable-next-line @typescript-eslint/naming-convention
+function Base64ToUTF8(it: string): string {
 	return decodeURIComponent(escape(window.atob(it)));
 }

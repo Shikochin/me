@@ -4,7 +4,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { Router, RouterModule } from "@angular/router";
 
 @Component({
-	selector: "krtl-notfound",
 	standalone: true,
 	imports: [CommonModule, RouterModule, MatButtonModule],
 	templateUrl: "./notfound.component.html",

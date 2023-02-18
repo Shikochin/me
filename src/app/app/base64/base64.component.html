@@ -2,12 +2,13 @@
 <p>Decode or encode Base64 strings. UTF-8 supported.</p>
 
 <div class="control">
-	<button mat-button (click)="reverse = !reverse">Reverse</button>
-	<!-- <div style="flex-grow: 1; display: flex;">
-	 	<div [style.order]="reverse ? '3' : '1'">Original</div>
-	 	<mat-icon style="order: 2"></mat-icon>
-	 	<div [style.order]="reverse ? '1' : '3'">Base64</div>
-	 </div> -->
+	<button mat-button (click)="reverse = !reverse" style="flex-grow: 1;">Reverse</button>
+	<!-- <div style="flex-grow: 1; display: flex">
+		<div [style.order]="reverse ? '3' : '1'">Original</div>
+		<mat-icon style="order: 2"></mat-icon>
+		<div [style.order]="reverse ? '1' : '3'">Base64</div>
+	</div> -->
+	<!-- <div style="flex: 1"></div> -->
 	<button mat-raised-button color="primary" (click)="convert()">Convert</button>
 </div>
 

@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-	selector: "krtl-friend",
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: "./friend.component.html",

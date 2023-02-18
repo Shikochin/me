@@ -10,7 +10,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { RouterModule } from "@angular/router";
 
 @Component({
-	selector: "app-index",
 	standalone: true,
 	imports: [CommonModule, RouterModule, MatButtonModule],
 	templateUrl: "./index.component.html",

@@ -7,14 +7,13 @@ import { MatInputModule } from "@angular/material/input";
 import { v4 as uuidv4 } from "uuid";
 
 @Component({
-	selector: "krtl-uuid",
 	standalone: true,
 	imports: [CommonModule, MatInputModule, MatButtonModule, ClipboardModule, MatIconModule],
 	templateUrl: "./uuid.component.html",
 	styleUrls: ["./uuid.component.scss"],
 })
 export class UuidComponent implements OnInit {
-	protected uuidv4!: string;
+	protected uuidv4: string = "";
 	constructor() {}
 
 	protected refreshuuidv4(): void {

@@ -2,7 +2,6 @@ import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-	selector: "krtl-about",
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: "./about.component.html",
