@@ -21,20 +21,25 @@
 
 #content {
 	contain: strict;
+	overflow: scroll;
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
 }
 
-#content-warp {
-	contain: strict;
-	overflow: scroll;
-	height: 100%;
-	padding: 16px;
+#main {
+	flex-grow: 1;
+}
+
+#footer {
+        margin-top: 32px;
 }
 
 .spacer {
-	flex: 1;
+	flex-grow: 1;
 }
 
-.indicator {
+#indicator {
 	position: absolute;
 	z-index: 1;
 }

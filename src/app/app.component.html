@@ -1,4 +1,4 @@
-<mat-progress-bar mode="indeterminate" class="indicator" [@indicator]="indicator"></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" id="indicator" [@indicator]="indicator"></mat-progress-bar>
 
 <!-- TODO: Achieving colour switching in CSS -->
 <mat-toolbar [color]="(layout.isDark$ | async) ? '' : 'primary'" id="toolbar">
@@ -13,9 +13,13 @@
 </mat-toolbar>
 <mat-sidenav-container id="container">
 	<mat-sidenav-content id="content">
-		<div id="content-warp">
+		<main id="main">
 			<router-outlet></router-outlet>
-		</div>
+		</main>
+		<footer id="footer">
+                        &copy; Keritial.<br />
+                        Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>.
+                </footer>
 	</mat-sidenav-content>
 	<mat-sidenav
 		#drawer
