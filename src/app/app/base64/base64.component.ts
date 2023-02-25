@@ -1,14 +1,23 @@
 import { ClipboardModule } from "@angular/cdk/clipboard";
 import { TextFieldModule } from "@angular/cdk/text-field";
+import { CommonModule } from "@angular/common";
 import { Component, ViewEncapsulation } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import { SharedModule } from "src/app/common/shared.module";
 
 @Component({
 	standalone: true,
-	imports: [SharedModule, MatInputModule, MatButtonModule, MatIconModule, ClipboardModule, TextFieldModule],
+	imports: [
+		CommonModule,
+		FormsModule,
+		MatInputModule,
+		MatButtonModule,
+		MatIconModule,
+		ClipboardModule,
+		TextFieldModule,
+	],
 	templateUrl: "./base64.component.html",
 	styleUrls: ["./base64.component.scss"],
 	// TODO:

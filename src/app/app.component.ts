@@ -7,25 +7,32 @@ import { filter, fromEvent, merge, take, takeUntil } from "rxjs";
 
 import { ThemeService } from "./common/layout.service";
 
-enum IndicatorStatus {
-	LOADING = "l",
-	DONE = "d",
-}
-
 @Component({
 	selector: "krtl-app",
 	templateUrl: "./app.component.html",
-	styleUrls: ["./app.component.scss"],
+	styles: [
+		`
+			:host {
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.spacer {
+				flex-grow: 1;
+			}
+		`,
+	],
 	animations: [
 		trigger("indicator", [
 			state(
-				IndicatorStatus.DONE,
+				"done",
 				style({
 					translate: "0 -100%",
 				})
 			),
 			state(
-				IndicatorStatus.LOADING,
+				"loading",
 				style({
 					translate: "0 0",
 				})
@@ -41,7 +48,7 @@ export class AppComponent implements OnInit {
 	@ViewChild("drawer")
 	private drawer?: MatDrawer;
 
-	protected indicator: IndicatorStatus = IndicatorStatus.LOADING;
+	protected indicator: string = "loading";
 
 	protected links: Link[] = [
 		{
@@ -89,14 +96,14 @@ export class AppComponent implements OnInit {
 
 		merge(navigationEnd$, pageLoad$)
 			.pipe(takeUntil(this.destory$))
-			.subscribe(() => (this.indicator = IndicatorStatus.DONE));
+			.subscribe(() => (this.indicator = "done"));
 
 		this.router.events
 			.pipe(
 				filter(event => event instanceof NavigationStart),
 				takeUntil(this.destory$)
 			)
-			.subscribe(() => (this.indicator = IndicatorStatus.LOADING));
+			.subscribe(() => (this.indicator = "loading"));
 	}
 }
 

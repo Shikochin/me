@@ -1,7 +1,11 @@
-<mat-progress-bar mode="indeterminate" id="indicator" [@indicator]="indicator"></mat-progress-bar>
+<mat-progress-bar
+	mode="indeterminate"
+	[@indicator]="indicator"
+	style="position: absolute; z-index: 1"
+></mat-progress-bar>
 
 <!-- TODO: Achieving colour switching in CSS -->
-<mat-toolbar [color]="(layout.isDark$ | async) ? '' : 'primary'" id="toolbar">
+<mat-toolbar [color]="(layout.isDark$ | async) ? '' : 'primary'" style="contain: strict">
 	<button mat-icon-button (click)="drawer.toggle()">
 		<mat-icon>menu</mat-icon>
 	</button>
@@ -11,21 +15,23 @@
 		<mat-icon>more_horiz</mat-icon>
 	</button>
 </mat-toolbar>
-<mat-sidenav-container id="container">
-	<mat-sidenav-content id="content">
-		<main id="main">
+<mat-sidenav-container style="contain: strict; flex-grow: 1">
+	<mat-sidenav-content
+		style="contain: strict; overflow: scroll; padding: 16px; display: flex; flex-direction: column"
+	>
+		<main style="flex-grow: 1">
 			<router-outlet></router-outlet>
 		</main>
-		<footer id="footer">
-                        &copy; Keritial.<br />
-                        Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC-BY-NC-SA 4.0</a>.
-                </footer>
+		<footer style="margin-top: 32px">
+			&copy; Keritial.<wbr /> Licensed under
+			<a href="http://creativecommons.org/licenses/by-nc/4.0/">CC-BY-NC 4.0</a>.
+		</footer>
 	</mat-sidenav-content>
 	<mat-sidenav
 		#drawer
-		id="drawer"
 		[mode]="(layout.isLarge$ | async) ? 'side' : 'over'"
 		[opened]="layout.isLarge$ | async"
+		style="min-width: 320px; contain: content; overscroll-behavior: contain"
 	>
 		<mat-nav-list>
 			<ng-container *ngFor="let it of links">

@@ -13,7 +13,6 @@ import { RouterModule } from "@angular/router";
 	standalone: true,
 	imports: [CommonModule, RouterModule, MatButtonModule],
 	templateUrl: "./index.component.html",
-	styleUrls: ["./index.component.scss"],
 })
 export class IndexComponent implements OnInit {
 	constructor() {}

@@ -5,7 +5,6 @@ import { Component, OnInit } from "@angular/core";
 	standalone: true,
 	imports: [CommonModule],
 	templateUrl: "./friend.component.html",
-	styleUrls: ["./friend.component.scss"],
 })
 export class FriendComponent implements OnInit {
 	constructor() {}
