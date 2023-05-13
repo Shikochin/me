@@ -19,7 +19,34 @@ import { MatInputModule } from "@angular/material/input";
 		TextFieldModule,
 	],
 	templateUrl: "./base64.component.html",
-	styleUrls: ["./base64.component.scss"],
+	styles: [
+		`
+			:root {
+				height: 100%;
+			}
+
+			.textarea {
+				mat-form-field {
+					width: 100%;
+					textarea {
+						resize: none;
+					}
+				}
+			}
+
+			.large {
+				.textarea {
+					flex-direction: row;
+
+					mat-form-field {
+						textarea {
+							height: 10vh;
+						}
+					}
+				}
+			}
+		`,
+	],
 	// TODO:
 	encapsulation: ViewEncapsulation.None,
 })

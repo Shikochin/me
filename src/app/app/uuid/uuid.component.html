@@ -1,10 +1,12 @@
 <h1>UUID</h1>
 
-<mat-form-field class="example-form-field">
-	<mat-label>UUID v4</mat-label>
-	<input matInput type="text" [value]="uuidv4" readonly />
-	<button matSuffix mat-icon-button [cdkCopyToClipboard]="uuidv4">
-		<mat-icon>content_copy</mat-icon>
-	</button>
-</mat-form-field>
-<button mat-raised-button (click)="refreshuuidv4()">Refresh</button>
+<div style="display: flex">
+	<mat-form-field style="flex: 1">
+		<mat-label>UUID v4</mat-label>
+		<input matInput type="text" [value]="uuidv4()" readonly />
+		<button matSuffix mat-icon-button [cdkCopyToClipboard]="uuidv4()">
+			<mat-icon>content_copy</mat-icon>
+		</button>
+	</mat-form-field>
+	<button mat-button (click)="refreshuuidv4()">Refresh</button>
+</div>
