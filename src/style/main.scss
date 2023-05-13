@@ -3,6 +3,10 @@
 @use "shared" as shared;
 @use "theme" as theme;
 
+@import url("https://r.krtl.top/d/normalize.css/normalize.css");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&family=Noto+Sans+SC&display=swap");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 html,
 body {
 	height: 100%;
