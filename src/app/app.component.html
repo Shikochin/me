@@ -34,16 +34,22 @@
 		style="min-width: 320px; contain: content; overscroll-behavior: contain"
 	>
 		<mat-nav-list>
-			<ng-container *ngFor="let it of links">
-				<a mat-list-item [href]="it.href" target="_blank" *ngIf="it.isLink">
-					<mat-icon>{{ it.icon }}</mat-icon>
-					{{ it.name }}
-				</a>
-				<a mat-list-item [routerLink]="it.href" *ngIf="!it.isLink" (click)="navigate$.emit(it.href ?? '')">
-					<mat-icon>{{ it.icon }}</mat-icon>
-					{{ it.name }}
-				</a>
-			</ng-container>
+			<a mat-list-item routerLink="/">
+				<mat-icon>home</mat-icon>
+				Home
+			</a>
+			<a mat-list-item routerLink="/article">
+				<mat-icon>article</mat-icon>
+				Articles
+			</a>
+			<a mat-list-item routerLink="/friend">
+				<mat-icon>people</mat-icon>
+				Friends
+			</a>
+			<a mat-list-item routerLink="/about">
+				<mat-icon>info</mat-icon>
+				About
+			</a>
 		</mat-nav-list>
 	</mat-sidenav>
 </mat-sidenav-container>

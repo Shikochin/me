@@ -43,36 +43,11 @@ import { ThemeService } from "./common/layout.service";
 })
 export class AppComponent implements OnInit {
 	private destory$ = new EventEmitter();
-	protected navigate$ = new EventEmitter<string>();
 
 	@ViewChild("drawer")
 	private drawer?: MatDrawer;
 
 	protected indicator: string = "loading";
-
-	protected links: Link[] = [
-		{
-			name: "Home",
-			icon: "home",
-			href: "/",
-		},
-		{
-			name: "Articles",
-			icon: "article",
-			href: "/article",
-		},
-		{
-			name: "Friends",
-			icon: "people",
-			href: "/friend",
-		},
-
-		{
-			name: "About",
-			icon: "info",
-			href: "/about",
-		},
-	];
 
 	constructor(protected layout: ThemeService, private router: Router) {}
 
@@ -83,16 +58,14 @@ export class AppComponent implements OnInit {
 	ngOnInit(): void {
 		const navigationEnd$ = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
 
-		const refresh$ = this.navigate$.pipe(filter(url => url === this.router.url));
+		const pageLoad$ = fromEvent(globalThis, "load").pipe(take(1));
 
-		merge(navigationEnd$, refresh$)
+		navigationEnd$
 			.pipe(
 				filter(() => !this.layout.isLarge),
 				takeUntil(this.destory$)
 			)
 			.subscribe(() => this.drawer?.close());
-
-		const pageLoad$ = fromEvent(globalThis, "load").pipe(take(1));
 
 		merge(navigationEnd$, pageLoad$)
 			.pipe(takeUntil(this.destory$))
@@ -105,12 +78,4 @@ export class AppComponent implements OnInit {
 			)
 			.subscribe(() => (this.indicator = "loading"));
 	}
-}
-
-interface Link {
-	icon?: string;
-	color?: string;
-	href?: string;
-	name?: string;
-	isLink?: boolean;
 }

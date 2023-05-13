@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, signal } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { Router, RouterModule } from "@angular/router";
 
@@ -12,7 +12,7 @@ import { Router, RouterModule } from "@angular/router";
 export class NotfoundComponent implements OnInit {
 	constructor(private router: Router) {}
 
-	protected path = this.router.url;
+	protected path = signal(this.router.url);
 
 	protected reload(): void {
 		this.router.navigateByUrl(this.router.url);
