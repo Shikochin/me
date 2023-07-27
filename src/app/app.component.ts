@@ -1,8 +1,14 @@
 import { animate, state, style, transition, trigger } from "@angular/animations";
+import { AsyncPipe } from "@angular/common";
 import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
 import { AnimationCurves } from "@angular/material/core";
-import { MatDrawer } from "@angular/material/sidenav";
-import { NavigationEnd, NavigationStart, Router } from "@angular/router";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatDrawer, MatSidenavModule } from "@angular/material/sidenav";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { NavigationEnd, NavigationStart, Router, RouterLink, RouterOutlet } from "@angular/router";
 import { filter, fromEvent, merge, take, takeUntil } from "rxjs";
 
 import { ThemeService } from "./common/layout.service";
@@ -39,6 +45,18 @@ import { ThemeService } from "./common/layout.service";
 			),
 			transition("*=>*", [animate(`0.2s ${AnimationCurves.ACCELERATION_CURVE}`)]),
 		]),
+	],
+	standalone: true,
+	imports: [
+		MatProgressBarModule,
+		MatToolbarModule,
+		MatButtonModule,
+		MatIconModule,
+		MatSidenavModule,
+		RouterOutlet,
+		MatListModule,
+		RouterLink,
+		AsyncPipe,
 	],
 })
 export class AppComponent implements OnInit {

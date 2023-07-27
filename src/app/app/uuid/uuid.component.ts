@@ -13,7 +13,6 @@ import { v4 as uuidv4 } from "uuid";
 })
 export class UuidComponent implements OnInit {
 	protected uuidv4 = signal("");
-	constructor() {}
 
 	protected refreshuuidv4(): void {
 		this.uuidv4.set(uuidv4());
