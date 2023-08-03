@@ -10,17 +10,21 @@
 html,
 body {
 	height: 100%;
+	margin: 0;
+
 	overscroll-behavior: none;
-}
-
-a {
-	color: inherit;
-}
-
-body {
-	font-family: shared.$font-family;
 	/* Non-standard, Chrome and Safari only */
 	-webkit-tap-highlight-color: transparent;
+}
+
+krtl-app {
+	height: 100%;
+
+	font-family: shared.$font-family;
+
+	a {
+		color: inherit;
+	}
 }
 
 /* CSS is awesome */

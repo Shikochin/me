@@ -50,3 +50,17 @@ import "zone.js"; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+// declare global {
+// 	interface ViewTransition {
+// 		finished: Promise<void>;
+// 		ready: Promise<void>;
+// 		updateCallbackDone: Promise<void>;
+// 		skipTransition(): void;
+// 	}
+// 	interface Document {
+// 		startViewTransition(): ViewTransition;
+// 	}
+// }
+
+// export {};

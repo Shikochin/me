@@ -1,8 +1,12 @@
-<mat-progress-bar
-	mode="indeterminate"
-	[@indicator]="indicator"
-	style="position: absolute; z-index: 1"
-></mat-progress-bar>
+<mat-progress-bar mode="indeterminate" [@indicator]="status" style="position: absolute; z-index: 10"></mat-progress-bar>
+
+<!-- Considering giving users with extremely slow network to continue navigate when timeout. -->
+<div
+	style="position: absolute; z-index: 10; width: 100%; height: 100%"
+	[style.background]="(layout.isDark$ | async) ? 'black' : 'white'"
+	[style.pointer-events]="status === 'done' ? 'none' : ''"
+	[@overlay]="status"
+></div>
 
 <!-- TODO: Achieving colour switching in CSS -->
 <mat-toolbar [color]="(layout.isDark$ | async) ? '' : 'primary'" style="contain: strict">

@@ -10,16 +10,16 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { bootstrapApplication, BrowserModule } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { RouterModule } from "@angular/router";
-import { LayoutProjectionModule } from "@layout-projection/angular";
 
+// import { LayoutProjectionModule } from "@layout-projection/angular";
 import { AppComponent } from "./app/app.component";
 import { AppRoutingModule } from "./app/app-routing.module";
 import { environment } from "./environments/environment";
-import { enableGoogleAnalytics } from "./util/GoogleAnalytics";
+import { enableAnalytics } from "./util/enableAnalytics";
 
 if (environment.production) {
 	enableProdMode();
-	enableGoogleAnalytics();
+	enableAnalytics();
 }
 
 bootstrapApplication(AppComponent, {
@@ -33,8 +33,8 @@ bootstrapApplication(AppComponent, {
 			MatIconModule,
 			MatButtonModule,
 			MatListModule,
-			MatProgressBarModule,
-			LayoutProjectionModule.forRoot()
+			MatProgressBarModule
+			// LayoutProjectionModule.forRoot()
 		),
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi()),

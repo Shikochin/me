@@ -1,4 +1,4 @@
-import { animate, state, style, transition, trigger } from "@angular/animations";
+import { animate, keyframes, state, style, transition, trigger } from "@angular/animations";
 import { AsyncPipe } from "@angular/common";
 import { Component, EventEmitter, OnInit, ViewChild } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
@@ -19,9 +19,9 @@ import { ThemeService } from "./common/layout.service";
 	styles: [
 		`
 			:host {
-				height: 100%;
 				display: flex;
 				flex-direction: column;
+				contain: paint;
 			}
 
 			.spacer {
@@ -43,7 +43,22 @@ import { ThemeService } from "./common/layout.service";
 					translate: "0 0",
 				})
 			),
-			transition("*=>*", [animate(`0.2s ${AnimationCurves.ACCELERATION_CURVE}`)]),
+			transition("* => *", [animate(`0.2s ${AnimationCurves.ACCELERATION_CURVE}`)]),
+		]),
+		trigger("overlay", [
+			state(
+				"done",
+				style({
+					opacity: "0",
+				})
+			),
+			state(
+				"loading",
+				style({
+					opacity: "0.3",
+				})
+			),
+			transition("* => *", [animate(`0.2s ${AnimationCurves.ACCELERATION_CURVE}`)]),
 		]),
 	],
 	standalone: true,
@@ -65,7 +80,7 @@ export class AppComponent implements OnInit {
 	@ViewChild("drawer")
 	private drawer?: MatDrawer;
 
-	protected indicator: string = "loading";
+	protected status: "loading" | "done" = "loading";
 
 	constructor(protected layout: ThemeService, private router: Router) {}
 
@@ -74,26 +89,29 @@ export class AppComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
-		const navigationEnd$ = this.router.events.pipe(filter(event => event instanceof NavigationEnd));
+		const navigationEnd$ = this.router.events.pipe(
+			filter(event => event instanceof NavigationEnd),
+			takeUntil(this.destory$)
+		);
+
+		const navigationStart$ = this.router.events.pipe(
+			filter(event => event instanceof NavigationStart),
+			takeUntil(this.destory$)
+		);
 
 		const pageLoad$ = fromEvent(globalThis, "load").pipe(take(1));
 
-		navigationEnd$
-			.pipe(
-				filter(() => !this.layout.isLarge),
-				takeUntil(this.destory$)
-			)
-			.subscribe(() => this.drawer?.close());
+		navigationEnd$.pipe(filter(() => !this.layout.isLarge)).subscribe(() => this.drawer?.close());
 
 		merge(navigationEnd$, pageLoad$)
 			.pipe(takeUntil(this.destory$))
-			.subscribe(() => (this.indicator = "done"));
+			.subscribe(() => (this.status = "done"));
 
-		this.router.events
-			.pipe(
-				filter(event => event instanceof NavigationStart),
-				takeUntil(this.destory$)
-			)
-			.subscribe(() => (this.indicator = "loading"));
+		navigationStart$.subscribe(() => {
+			this.status = "loading";
+			// if ((document as any).startViewTransition) {
+			// 	(document as any).startViewTransition(console.log);
+			// }
+		});
 	}
 }
